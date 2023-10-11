@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style type="text/css">
+		body {
+			background-color: #333;
+			color: #fff;
+			font-family: Arial;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		table {
+			margin: 0 auto;
+			margin-top: 50px;
+			border-collapse: collapse;
+		}
+		td {
+			padding: 10px;
+			border: 1px solid #fff;
+			text-align: center;
+			font-size: 20px;
+			cursor: pointer;
+			background-color: #444;
+		}
+		td:hover {
+			background-color: #555;
+		}
+		input[type=text] {
+			width: 100%;
+			height: 50px;
+			font-size: 30px;
+			padding-left: 10px;
+			background-color: #444;
+			color: #fff;
+			border: none;
+		}
+		input[type=button] {
+			width: 100%;
+			height: 50px;
+			font-size: 20px;
+			cursor: pointer;
+			background-color: #555;
+			color: #fff;
+			border: none;
+		}
+		input[type=button]:hover {
+			background-color: #666;
+		}
+	</style>
+</head>
+<body>
+<h1>Calculator</h1>
+<table>
+<tr>
+<td colspan="4"><input type="text" id="result" disabled></td>
+</tr>
+<tr>
+<td onclick="document.getElementById('result').value += '7'">7</td>
+<td onclick="document.getElementById('result').value += '8'">8</td>
+<td onclick="document.getElementById('result').value += '9'">9</td>
+<td onclick="document.getElementById('result').value += '/'">/</td>
+</tr>
+<tr>
+<td onclick="document.getElementById('result').value += '4'">4</td>
+<td onclick="document.getElementById('result').value += '5'">5</td>
+<td onclick="document.getElementById('result').value += '6'">6</td>
+<td onclick="document.getElementById('result').value += '*'">*</td>
+</tr>
+<tr>
+<td onclick="document.getElementById('result').value += '1'">1</td>
+<td onclick="document.getElementById('result').value += '2'">2</td>
+<td onclick="document.getElementById('result').value += '3'">3</td>
+<td onclick="document.getElementById('result').value += '-'">-</td>
+</tr>
+<tr>
+<td onclick="document.getElementById('result').value += '0'">0</td>
+<td onclick="document.getElementById('result').value += '.'">.</td>
+<td onclick="document.getElementById('result').value = eval(document.getElementById('result').value)">=</td>
+<td onclick="document.getElementById('result').value += '+'">+</td>
+</tr>
+<tr>
+<td colspan="4"><input type="button" value="AC" onclick="document.getElementById('result').value = ''"></td>	
+</tr>	
+</table>
+
+<script type="text/javascript">
+	document.addEventListener("keydown", function(event) {
+	  if (event.keyCode === 13) {
+	    event.preventDefault();
+	    document.getElementById("myBtn").click();
+	  }
+	  else if (event.keyCode === 27) {
+	  	event.preventDefault();
+	  	document.getElementById("clear").click();
+	  }
+	  else if (event.keyCode === 8) {
+	  	event.preventDefault();
+	  	document.getElementById("backspace").click();
+	  }
+	  else if (event.keyCode === 46) {
+	  	event.preventDefault();
+	  	document.getElementById("clear").click();
+	  }
+	  else if (event.keyCode === 107) {
+	  	event.preventDefault();
+	  	document.getElementById("plus").click();
+	  }
+	  else if (event.keyCode === 109) {
+	  	event.preventDefault();
+	  	document.getElementById("minus").click();
+	  }
+	  else if (event.keyCode === 106) {
+	  	event.preventDefault();
+	  	document.getElementById("multiply").click();
+	  }
+	  else if (event.keyCode === 111) {
+	  	event.preventDefault();
+	  	document.getElementById("divide").click();
+	  }
+	  else if (event.keyCode === 190 || event.keyCode === 110) {
+	  	event.preventDefault();
+	  	document.getElementById("dot").click();
+	  }
+	  else if ((event.keyCode >=48 && event.keyCode <=57) || (event.keyCode >=96 && event.keyCode <=105)) {
+	  	event.preventDefault();
+	  	var key = event.key.toString();
+	  	if (key.length == 1) {
+	  		document.querySelector(`[onclick*="${key}"]`).click();	
+	  	}
+    }
+});
+</script>
+</body>
+</html>
